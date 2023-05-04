@@ -1,0 +1,19 @@
+int temp;
+float grad;
+
+void setup() {
+  pinMode(12, OUTPUT);
+  pinMode(A1, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  temp = analogRead(A1);
+  grad = (temp/1023.0)*5.0*1000/10;
+  Serial.println(grad);
+
+  if (grad > 24) { digitalWrite(12, HIGH); }
+  if (grad < 24) { digitalWrite(12, LOW); }
+
+  delay(1000); // espera un segundo
+}
